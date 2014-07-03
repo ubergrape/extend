@@ -1,0 +1,25 @@
+{
+  "name": "extend",
+  "repo": "darsain/extend",
+  "description": "Extending objects, shallow or deep.",
+  "version": "0.0.1",
+  "keywords": [
+    "extend",
+    "object",
+    "deep"
+  ],
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ],
+  "dependencies": {
+    "component/type": "*"
+  },
+  "development": {
+    "dependencies": {
+      "visionmedia/mocha": "*",
+      "component/assert": "*"
+    }
+  },
+  "license": "MIT"
+}
