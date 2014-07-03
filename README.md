@@ -7,7 +7,7 @@ Extending objects, shallow or deep.
 With [component(1)](https://github.com/component/component):
 
 ```bash
-component install darsain/list
+component install darsain/extend
 ```
 
 ## API
