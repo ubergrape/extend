@@ -14,7 +14,7 @@ component install darsain/extend
 
 ### extend([deep], obj1, ..., objN)
 
-Extends the first passed object with next objects in line. If last argument is a boolean `true` the extend will be deep.
+Extends the first passed object with next objects in line. If first argument is a boolean `true` the extend will be deep.
 
 Deep extending will clone objects and arrays. If there are objects in the array, they'll also be cloned, not just cross-referenced.
 
