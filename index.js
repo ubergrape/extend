@@ -1,4 +1,5 @@
 var type = require('type');
+var clone = require('clone');
 var slice = [].slice;
 
 module.exports = exports = extend;
@@ -12,20 +13,12 @@ function extend(root) {
 	}
 	for (var i = 0, l = args.length, source; source = args[i], i < l; i++) {
 		if (!source) continue;
-		for (var prop in source)
-			if (!deep) root[prop] = source[prop];
-			else switch (type(source[prop])) {
-				case 'object': extend(root[prop] = root[prop] || {}, source[prop]); break;
-				case 'array': root[prop] = cloneArray(source[prop]); break;
-				default: root[prop] = source[prop];
-			}
+		for (var prop in source) {
+			if (!deep || !source[prop]) root[prop] = source[prop];
+			else if (type(root[prop]) === 'object' && type(source[prop]) === 'object')
+				root[prop] = extend(true, root[prop], clone(source[prop]));
+			else root[prop] = clone(source[prop]);
+		}
 	}
 	return root;
-}
-
-function cloneArray(array) {
-	var result = [];
-	for (var i = 0, l = array.length, item; item = array[i], i < l; i++)
-		result.push(type(item) === 'object' ? extend(true, {}, item) : item);
-	return result;
 }
