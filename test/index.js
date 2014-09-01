@@ -62,4 +62,59 @@ describe('extend([deep], obj1, ..., objN)', function () {
 		});
 	});
 
+	it('should correctly handle null when deep extending', function () {
+		var obj = {
+			a: 'foo',
+			b: {
+				a: 'bar',
+				b: 'baz'
+			}
+		};
+		assert.deepEqual(extend(true, obj, { a: null, b: { a: null } }), {
+			a: null,
+			b: {
+				a: null,
+				b: 'baz'
+			}
+		});
+	});
+
+	it('should let non-objects override objects in deep', function () {
+		var obj = {
+			a: { a: 1 },
+			b: {
+				a: { a: 2 },
+				b: 'baz'
+			},
+			c: { a: 3 }
+		};
+		assert.deepEqual(extend(true, obj, { a: 'foo', b: { a: 1 }, c: [0, 1] }), {
+			a: 'foo',
+			b: {
+				a: 1,
+				b: 'baz'
+			},
+			c: [0, 1]
+		});
+	});
+
+	it('should let objects override non-objects in deep', function () {
+		var obj = {
+			a: 'foo',
+			b: {
+				a: 1,
+				b: 'baz'
+			},
+			c: [0, 1]
+		};
+		assert.deepEqual(extend(true, obj, { a: { a: 1 }, b: { a: { a: 2 } }, c: { a: 3 } }), {
+			a: { a: 1 },
+			b: {
+				a: { a: 2 },
+				b: 'baz'
+			},
+			c: { a: 3 }
+		});
+	});
+
 });
