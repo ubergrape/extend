@@ -1,0 +1,20 @@
+{
+  "name": "extend",
+  "description": "Extending objects, shallow or deep.",
+  "version": "1.0.0",
+  "keywords": [
+    "extend",
+    "object",
+    "deep"
+  ],
+  "main": "index.js",
+  "dependencies": {
+    "clone": "npmcomponent/component-clone",
+    "type": "npmcomponent/component-type"
+  },
+  "devDependencies": {
+    "mocha": "visionmedia/mocha",
+    "assert": "npmcomponent/component-assert"
+  },
+  "license": "MIT"
+}
